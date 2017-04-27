@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Parking GPS</title>
+    <title>Magic RBC</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -26,15 +26,68 @@
     <div class="container">
       <div class="jumbotron"><h1><img class="car" src="img/parking.png"> Parking GPS</h1></div>
 
-      <a href="cadastro_veiculo.php" class="btn btn-primary">Cadastro de Veículo</a>
+      <div class="row">
+        <form class="form-inline">
+          <div class="form-group">
+            <select class="form-control" multiple>
+              <option>Colorless</option>
+              <option>Blue</option>
+              <option>Red</option>
+              <option>Green</option>
+              <option>Black</option>
+              <option>White</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" multiple>
+              <option>Land</option>
+              <option>Creature</option>
+              <option>Artifact</option>
+              <option>Enchantment</option>
+              <option>Planeswalker</option>
+              <option>Sorcery</option>
+              <option>Instant</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" multiple>
+              <option>Untyped</option>
+              <option>Basic</option>
+              <option>Legendary</option>
+              <option>Ongoing</option>
+              <option>Snow</option>
+              <option>World</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" multiple>
+              <option>Common</option>
+              <option>Uncommon</option>
+              <option>Rare</option>
+              <option>Mythic Rare</option>
+              <option>Special</option>
+              <option>Basic Land</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" multiple>
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>maior ou igual a 10</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+      </div>
 
-      <a href="enviar_ponto.php" class="btn btn-primary">Enviar Ponto</a>
-
-      <a href="ver_movimentacoes.php" class="btn btn-primary">Ver Movimentação</a>
-
-      <a href="estacionamentos_proximos.php" class="btn btn-primary">Ver Estacionamentos Próximos</a>
-
-      <a href="ver_carros.php" class="btn btn-primary">Lista de Carros</a>
     </div> <!-- /container -->
   </body>
 </html>
