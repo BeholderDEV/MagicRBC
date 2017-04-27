@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="lib/Bootstrap-multiselect/bootstrap-multiselect.css" type="text/css"/>
+    <link rel="stylesheet" href="lib/angular-select/isteven-multi-select.css" type="text/css"/>
     <link rel="stylesheet" href="css/estilo.css"></link>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,66 +47,71 @@
         <form class="form-inline col-md-12">
           <div class="form-group">
             <label>Color</label>
-            <select id="colors" class="form-control" multiple="multiple">
-              <option>Colorless</option>
-              <option>Blue</option>
-              <option>Red</option>
-              <option>Green</option>
-              <option>Black</option>
-              <option>White</option>
-            </select>
+            <div
+              isteven-multi-select
+              input-model="colorsModel"
+              output-model="colorsSelected"
+              button-label="icon"
+              item-label="icon name"
+              on-close="atualizarTabela()"
+              helper-elements=""
+              tick-property="ticked"></div>
           </div>
           <div class="form-group">
             <label>Type</label>
-            <select id="type" class="form-control">
-              <option>Land</option>
-              <option>Creature</option>
-              <option>Artifact</option>
-              <option>Enchantment</option>
-              <option>Planeswalker</option>
-              <option>Sorcery</option>
-              <option>Instant</option>
-            </select>
+            <div
+              isteven-multi-select
+              input-model="typeModel"
+              output-model="typeSelected"
+              button-label="name"
+              item-label="name"
+              tick-property="ticked"
+              on-close="atualizarTabela()"
+              helper-elements=""
+              selection-mode="single"></div>
           </div>
           <div class="form-group">
             <label>Super Type</label>
-            <select id="superType" class="form-control">
-              <option>Untyped</option>
-              <option>Basic</option>
-              <option>Legendary</option>
-              <option>Ongoing</option>
-              <option>Snow</option>
-              <option>World</option>
-            </select>
+            <div
+              isteven-multi-select
+              input-model="superTypeModel"
+              output-model="superTypeSelected"
+              button-label="name"
+              item-label="name"
+              tick-property="ticked"
+              on-close="atualizarTabela()"
+              helper-elements=""
+              selection-mode="single"></div>
           </div>
           <div class="form-group">
             <label>Rarity</label>
-            <select id="rarity" class="form-control">
-              <option>Common</option>
-              <option>Uncommon</option>
-              <option>Rare</option>
-              <option>Mythic Rare</option>
-              <option>Special</option>
-              <option>Basic Land</option>
-            </select>
+            <div
+              isteven-multi-select
+              input-model="rarityModel"
+              output-model="raritySelected"
+              button-label="name"
+              item-label="name"
+              tick-property="ticked"
+              on-close="atualizarTabela()"
+              helper-elements=""
+              selection-mode="single"></div>
           </div>
           <div class="form-group">
             <label>Mana Cost</label>
-            <select id="cmc" class="form-control">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>maior ou igual a 10</option>
-            </select>
+            <div
+              isteven-multi-select
+              input-model="cmcModel"
+              output-model="cmcSelected"
+              button-label="name"
+              item-label="name"
+              tick-property="ticked"
+              on-close="atualizarTabela()"
+              helper-elements=""
+              selection-mode="single"></div>
           </div>
-          <button type="submit" class="btn btn-primary">Search</button>
+          <div class="form-group">
+            <button id="botao" type="submit" class="btn btn-primary pull-right">Search</button>
+          </div>
         </form>
       </div>
       <section class="row">
@@ -143,7 +148,7 @@
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
-    <script type="text/javascript" src="lib/Bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="lib/angular-select/isteven-multi-select.js"></script>
 
 
     <script type="text/javascript" src="js/script.js"></script>

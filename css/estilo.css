@@ -4,3 +4,9 @@ body{
 #forms{
   margin-bottom: 50px;
 }
+.form-group{
+  padding-left: 20px;
+}
+#botao{
+  margin-top: 20px;
+}
