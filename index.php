@@ -12,8 +12,8 @@
     <title>Magic RBC</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="lib/Bootstrap-multiselect/bootstrap-multiselect.css" type="text/css"/>
     <link rel="stylesheet" href="css/estilo.css"></link>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
       <div class="row">
         <form class="form-inline">
           <div class="form-group">
-            <select class="form-control" multiple>
+            <select id="selectTags" class="form-control" multiple="multiple">
               <option>Colorless</option>
               <option>Blue</option>
               <option>Red</option>
@@ -39,7 +39,7 @@
             </select>
           </div>
           <div class="form-group">
-            <select class="form-control" multiple>
+            <select class="form-control">
               <option>Land</option>
               <option>Creature</option>
               <option>Artifact</option>
@@ -50,7 +50,7 @@
             </select>
           </div>
           <div class="form-group">
-            <select class="form-control" multiple>
+            <select class="form-control">
               <option>Untyped</option>
               <option>Basic</option>
               <option>Legendary</option>
@@ -60,7 +60,7 @@
             </select>
           </div>
           <div class="form-group">
-            <select class="form-control" multiple>
+            <select class="form-control">
               <option>Common</option>
               <option>Uncommon</option>
               <option>Rare</option>
@@ -70,7 +70,7 @@
             </select>
           </div>
           <div class="form-group">
-            <select class="form-control" multiple>
+            <select class="form-control">
               <option>0</option>
               <option>1</option>
               <option>2</option>
@@ -89,5 +89,9 @@
       </div>
 
     </div> <!-- /container -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="lib/Bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
   </body>
 </html>
