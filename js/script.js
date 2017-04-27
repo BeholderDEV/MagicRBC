@@ -1,3 +1,7 @@
 $(document).ready(function() {
-  $('#selectTags').multiselect();
+  $('#colors').multiselect();
+  $('#type').multiselect();
+  $('#superType').multiselect();
+  $('#rarity').multiselect();
+  $('#cmc').multiselect();
 });

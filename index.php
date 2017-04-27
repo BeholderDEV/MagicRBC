@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,14 +22,32 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body ng-controller="MainCtrl as main">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Magic RBC</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">Documentação</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
     <div class="container">
-      <div class="jumbotron"><h1><img class="img-responsive" src="img/parking.png"> RBC</h1></div>
-
-      <div class="row">
-        <form class="form-inline">
+      <div class="row" id="forms">
+        <form class="form-inline col-md-12">
           <div class="form-group">
-            <select id="selectTags" class="form-control" multiple="multiple">
+            <label>Color</label>
+            <select id="colors" class="form-control" multiple="multiple">
               <option>Colorless</option>
               <option>Blue</option>
               <option>Red</option>
@@ -39,7 +57,8 @@
             </select>
           </div>
           <div class="form-group">
-            <select class="form-control">
+            <label>Type</label>
+            <select id="type" class="form-control">
               <option>Land</option>
               <option>Creature</option>
               <option>Artifact</option>
@@ -50,7 +69,8 @@
             </select>
           </div>
           <div class="form-group">
-            <select class="form-control">
+            <label>Super Type</label>
+            <select id="superType" class="form-control">
               <option>Untyped</option>
               <option>Basic</option>
               <option>Legendary</option>
@@ -60,7 +80,8 @@
             </select>
           </div>
           <div class="form-group">
-            <select class="form-control">
+            <label>Rarity</label>
+            <select id="rarity" class="form-control">
               <option>Common</option>
               <option>Uncommon</option>
               <option>Rare</option>
@@ -70,7 +91,8 @@
             </select>
           </div>
           <div class="form-group">
-            <select class="form-control">
+            <label>Mana Cost</label>
+            <select id="cmc" class="form-control">
               <option>0</option>
               <option>1</option>
               <option>2</option>
@@ -84,14 +106,47 @@
               <option>maior ou igual a 10</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-default">Search</button>
+          <button type="submit" class="btn btn-primary">Search</button>
         </form>
       </div>
+      <section class="row">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Color</td>
+                  <th>Type</td>
+                  <th>Super Type</td>
+                  <th>Rarity</td>
+                  <th>Convertes Mana Cost</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{colors}}</td>
+                  <td>{{type}}</td>
+                  <td>{{superType}}</td>
+                  <td>{{rarity}}</td>
+                  <td>{{cmc}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
     </div> <!-- /container -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
     <script type="text/javascript" src="lib/Bootstrap-multiselect/bootstrap-multiselect.js"></script>
+
+
     <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>
