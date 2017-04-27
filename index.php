@@ -24,7 +24,7 @@
 
   <body>
     <div class="container">
-      <div class="jumbotron"><h1><img class="car" src="img/parking.png"> Magic RBC</h1></div>
+      <div class="jumbotron"><h1><img class="car" src="img/parking.png"> RBC</h1></div>
 
       <div class="row">
         <form class="form-inline">
