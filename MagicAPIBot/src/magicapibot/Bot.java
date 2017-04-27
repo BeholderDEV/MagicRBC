@@ -37,7 +37,7 @@ public class Bot {
         this.salvarTexto("");
         URL magic;
         try {
-            for (int i = 1; i < 333; i++) {
+            for (int i = 327; i < 333; i++) {
                 magic = new URL("https://api.magicthegathering.io/v1/cards" + "?page=" + i);
                 URLConnection mc = magic.openConnection();
                 mc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
