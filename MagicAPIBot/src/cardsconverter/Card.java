@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  *
  * @author Alisson
  */
-@JsonIgnoreProperties(value={"loyalty","watermark","names", "foreignNames","number","variations","rulings","reserved","type" , "subtypes", "flavor","artist","layout","multiverseid","printings","originalText","originalType","legalities","id"})
+@JsonIgnoreProperties(value={"starter", "loyalty","watermark","names", "foreignNames","number","variations","rulings","reserved","type" , "subtypes", "flavor","artist","layout","multiverseid","printings","originalText","originalType","legalities","id"})
 public class Card {
     private String name;
     private String manaCost;

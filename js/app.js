@@ -3,10 +3,41 @@ angular.module('app', [ "isteven-multi-select" ])
   var vm = this;
   $http({
     method: 'GET',
-    url: 'https://magic-rbc.herokuapp.com/api/types.php'
+    url: 'api/types.php'
   }).then(function successCallback(response) {
     console.log('sa')
     vm.types = response;
+  });
+  $http({
+    method: 'GET',
+    url: 'api/supertypes.php'
+  }).then(function successCallback(response) {
+    console.log('sa')
+    vm.supertypes = response;
+  });
+  $http({
+    method: 'GET',
+    url: 'api/colors.php'
+  }).then(function successCallback(response) {
+    vm.colors = response;
+  });
+  $http({
+    method: 'GET',
+    url: 'api/rarities.php'
+  }).then(function successCallback(response) {
+    vm.rarities = response;
+  });
+  $http({
+    method: 'GET',
+    url: 'api/subtypes.php'
+  }).then(function successCallback(response) {
+    vm.subtypes = response;
+  });
+  $http({
+    method: 'GET',
+    url: 'api/sets.php'
+  }).then(function successCallback(response) {
+    vm.sets = response;
   });
 })
 .controller('MainCtrl', function($scope) {

@@ -23,19 +23,21 @@ public class Jack {
     public void run(){
         mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
         try {
-//            Card card = mapper.readValue(new File("C:\\xampp\\htdocs\\magic\\onecard.json"), Card.class);
-//            System.out.println(card.getName());
-            CardCollection cl = mapper.readValue(new File("C:\\xampp\\htdocs\\magic\\sat2.json"), CardCollection.class);
-            
-            for(int i=0; i<cl.getCards().length;i++){
-                if(cl.getCards()[i].getSet().equals("DDS") || cl.getCards()[i].getSet().equals("AKH") || cl.getCards()[i].getSet().equals("MPS_AKH")){
-                    System.out.println(i+" - "+cl.getCards()[i].getSetName()+" - "+cl.getCards()[i].getName());
-                }
+//            CardCollection cl = mapper.readValue(new File("C:\\xampp\\htdocs\\magic\\zendikartest2.json"), CardCollection.class);
+//            
+//            for(int i=0; i<cl.getCards().length;i++){
+////                if(cl.getCards()[i].getSet().equals("DDS") || cl.getCards()[i].getSet().equals("AKH") || cl.getCards()[i].getSet().equals("MPS_AKH")){
+//                    System.out.println(i+" - "+cl.getCards()[i].getSet()+" - "+cl.getCards()[i].getName());
+////                }
+//            }
+            String[] cl = mapper.readValue(new File("C:\\xampp\\htdocs\\magic\\subtypes.json"), String[].class);
+            for (int i = 0; i < cl.length; i++) {
+                System.out.println("insert into subtype (name) values ('"+cl[i]+"');");
             }
+            
             
         } catch (IOException ex) {
             Logger.getLogger(Jack.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }

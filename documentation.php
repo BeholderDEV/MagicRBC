@@ -35,30 +35,167 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li class="active"><a href="#">Documentação</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
     <div class="container">
-      <section class="row">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>id</td>
-                  <th>Type</td>
-                </tr>
-              </thead>
-              <tbody ng-repeat="tp in doc.types">
-                <tr>
-                  <td>{{tp.id}}</td>
-                  <td>{{tp.name}}</td>
-                </tr>
-              </tbody>
-            </table>
+      <div class="page-header">
+        <h1>Program Documentation <small>For a better RBC understand</small></h1>
+      </div>
+      <section class="row" id="tabels">
+        <h2> Tables </h2>
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Icon</th>
+                    <th>id</td>
+                    <th>Set</td>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="tp in doc.sets.data">
+                  <tr>
+                    <td><img ng-src="{{tp.imageurl}}"></td>
+                    <td>{{tp.id}}</td>
+                    <td>{{tp.name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>id</td>
+                    <th>Color</td>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="tp in doc.colors.data">
+                  <tr>
+                    <td>{{tp.id}}</td>
+                    <td>{{tp.name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>id</td>
+                    <th>Rarity</td>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="tp in doc.rarities.data">
+                  <tr>
+                    <td>{{tp.id}}</td>
+                    <td>{{tp.name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>id</td>
+                    <th>Super Type</td>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="tp in doc.supertypes.data">
+                  <tr>
+                    <td>{{tp.id}}</td>
+                    <td>{{tp.name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>id</td>
+                    <th>Type</td>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="tp in doc.types.data">
+                  <tr>
+                    <td>{{tp.id}}</td>
+                    <td>{{tp.name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>id</td>
+                    <th>SubType</td>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="tp in doc.subtypes.data">
+                  <tr>
+                    <td>{{tp.id}}</td>
+                    <td>{{tp.name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="row" >
+        <h2> Cards </h2>
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Color</td>
+                    <th>Type</td>
+                    <th>Super Type</td>
+                    <th>Rarity</td>
+                    <th>Convertes Mana Cost</td>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="tp in doc.cards.data">
+                  <tr>
+                    <td>{{tp.name}}</td>
+                    <td>{{type}}</td>
+                    <td>{{superType}}</td>
+                    <td>{{rarity}}</td>
+                    <td>{{cmc}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
