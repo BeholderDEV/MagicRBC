@@ -8,5 +8,5 @@ $query = "select * from type;";
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 $resultArray = pg_fetch_all($result);
 
-echo json_encode($resultArray[0]);
+echo json_encode($resultArray);
 ?>
