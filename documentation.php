@@ -42,7 +42,6 @@
       </div>
     </nav>
     <div class="container">
-      {{doc.types}}
       <section class="row">
         <div class="panel panel-default">
           <div class="panel-body">
@@ -53,10 +52,10 @@
                   <th>Type</td>
                 </tr>
               </thead>
-              <tbody ng-repeat="t in doc.types">
+              <tbody ng-repeat="tp in doc.types">
                 <tr>
-                  <td>{{t.id}}</td>
-                  <td>{{t.name}}</td>
+                  <td>{{tp.id}}</td>
+                  <td>{{tp.name}}</td>
                 </tr>
               </tbody>
             </table>
@@ -72,7 +71,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
     <script type="text/javascript" src="lib/angular-select/isteven-multi-select.js"></script>
-    
+
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
   </body>

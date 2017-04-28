@@ -3,8 +3,9 @@ angular.module('app', [ "isteven-multi-select" ])
   var vm = this;
   $http({
     method: 'GET',
-    url: '/api/types.php'
+    url: 'https://magic-rbc.herokuapp.com/api/types.php'
   }).then(function successCallback(response) {
+    console.log('sa')
     vm.types = response;
   });
 })
