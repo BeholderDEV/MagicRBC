@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/xampp/htdocs/magic/MagicAPIBot/src/cardsconverter/Card.java</file>
             <file>file:/C:/xampp/htdocs/magic/MagicAPIBot/src/cardsconverter/CardCollection.java</file>
+            <file>file:/C:/xampp/htdocs/magic/MagicAPIBot/src/magicapibot/Bot.java</file>
             <file>file:/C:/xampp/htdocs/magic/MagicAPIBot/src/cardsconverter/Converter.java</file>
             <file>file:/C:/xampp/htdocs/magic/MagicAPIBot/src/cardsconverter/Jack.java</file>
         </group>

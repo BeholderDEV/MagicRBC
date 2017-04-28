@@ -55,12 +55,12 @@ angular.module('app', [ "isteven-multi-select" ])
     $scope.cmc=$scope.cmcSelected[0].name;
   }
   $scope.colorsModel = [
-  	{icon: "<img src='img/colorless.png'/>", 	name: "Colorless",  	ticked: true},
-  	{icon: "<img src='img/black.png'/>", 	name: "Black", 	ticked: false},
-  	{icon: "<img src='img/white.png'/>", 	name: "White", 	ticked: false},
-  	{icon: "<img src='img/blue.png'/>", 	name: "Blue", 	ticked: false},
-  	{icon: "<img src='img/red.png'/>", 	name: "Red", 	ticked: false},
-    {icon: "<img src='img/green.png'/>", 	name: "Green", 	ticked: false}
+  	{icon: "<img src='http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=C&type=symbol'>", 	name: "Colorless",  	ticked: true},
+  	{icon: "<img src='http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=B&type=symbol'>", 	name: "Black", 	ticked: false},
+  	{icon: "<img src='http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=W&type=symbol'>", 	name: "White", 	ticked: false},
+  	{icon: "<img src='http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=U&type=symbol'>", 	name: "Blue", 	ticked: false},
+  	{icon: "<img src='http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=R&type=symbol'>", 	name: "Red", 	ticked: false},
+    {icon: "<img src='http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=G&type=symbol'>", 	name: "Green", 	ticked: false}
   ];
   $scope.typeModel = [
   	{name: "Creature", 	ticked: true},

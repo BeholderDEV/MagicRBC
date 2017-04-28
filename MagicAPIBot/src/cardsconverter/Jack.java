@@ -9,6 +9,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,24 +19,80 @@ import java.util.logging.Logger;
  * @author Alisson
  */
 public class Jack {
+    
+    private static final List<String> SETS = Arrays.asList("BFZ" , "OGW" , "SOI" , "EMN" , "KLD" , "AER" , "AKH");
     ObjectMapper mapper = new ObjectMapper();
     
+    private int getRarityID(String raridade){
+        switch (raridade){
+            case "Common":
+               return 1;
+            case "Uncommon":
+               return 2;   
+            case "Rare":
+               return 3;
+            case "Mythic Rare":
+               return 4;
+            case "Special":
+               return 5;
+            case "Basic Land":
+               return 6;
+            default:
+               return 1;
+        }
+    }
+    
+    private int getSetID(String set){
+        switch (set){
+            case "BFZ":
+               return 1;
+            case "OGW":
+               return 2;   
+            case "SOI":
+               return 3;
+            case "EMN":
+               return 4;
+            case "KLD":
+               return 5;
+            case "AER":
+               return 6;
+            case "AKH":
+               return 7;
+            default:
+               return 1;
+        }
+    }
+    
+    private String resolve(String s){
+        if(s!=null){
+            return s.replace("'", "§");
+        }
+        else{
+            return s;
+        }
+            
+    }
     
     public void run(){
         mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
         try {
-//            CardCollection cl = mapper.readValue(new File("C:\\xampp\\htdocs\\magic\\zendikartest2.json"), CardCollection.class);
-//            
-//            for(int i=0; i<cl.getCards().length;i++){
-////                if(cl.getCards()[i].getSet().equals("DDS") || cl.getCards()[i].getSet().equals("AKH") || cl.getCards()[i].getSet().equals("MPS_AKH")){
-//                    System.out.println(i+" - "+cl.getCards()[i].getSet()+" - "+cl.getCards()[i].getName());
-////                }
-//            }
-            String[] cl = mapper.readValue(new File("C:\\xampp\\htdocs\\magic\\subtypes.json"), String[].class);
-            for (int i = 0; i < cl.length; i++) {
-                System.out.println("insert into subtype (name) values ('"+cl[i]+"');");
-            }
             
+            CardCollection cl = mapper.readValue(new File("C:\\xampp\\htdocs\\magic\\zendikartest2.json"), CardCollection.class);
+            
+            for(int i=0; i<cl.getCards().length;i++){
+                if(SETS.contains(cl.getCards()[i].getSet())){
+                    System.out.println("insert into card(name, manaCost, cmc, rarity_id, set_id, imageUrl, c_power, c_toughness, description) values ('"+
+                                                        resolve(cl.getCards()[i].getName())+"','"+
+                                                        cl.getCards()[i].getManaCost()+"','"+
+                                                        Math.max(cl.getCards()[i].getCmc(),10)+"','"+
+                                                        getRarityID(cl.getCards()[i].getRarity())+"','"+
+                                                        getSetID(cl.getCards()[i].getSet())+"','"+
+                                                        cl.getCards()[i].getImageUrl()+"','"+
+                                                        cl.getCards()[i].getPower()+"','"+
+                                                        cl.getCards()[i].getToughness()+"','"+
+                                                        resolve(cl.getCards()[i].getText())+"');");
+                }
+            }
             
         } catch (IOException ex) {
             Logger.getLogger(Jack.class.getName()).log(Level.SEVERE, null, ex);

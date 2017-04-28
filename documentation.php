@@ -56,12 +56,14 @@
                     <th>Icon</th>
                     <th>id</td>
                     <th>Set</td>
+                    <th>SetName</td>
                   </tr>
                 </thead>
                 <tbody ng-repeat="tp in doc.sets.data">
                   <tr>
                     <td><img ng-src="{{tp.imageurl}}"></td>
                     <td>{{tp.id}}</td>
+                    <td>{{tp.code}}</td>
                     <td>{{tp.name}}</td>
                   </tr>
                 </tbody>
@@ -69,18 +71,20 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="panel panel-default">
             <div class="panel-body">
               <table class="table">
                 <thead>
                   <tr>
+                    <th>Icon</th>
                     <th>id</td>
                     <th>Color</td>
                   </tr>
                 </thead>
                 <tbody ng-repeat="tp in doc.colors.data">
                   <tr>
+                    <td><img ng-src="{{tp.imageurl}}"></td>
                     <td>{{tp.id}}</td>
                     <td>{{tp.name}}</td>
                   </tr>

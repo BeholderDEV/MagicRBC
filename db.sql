@@ -10,6 +10,7 @@ create table card(
   c_toughness integer,
   description varchar(512)
 );
+--insert into card(name, manaCost, cmc, rarity_id, set_id, imageUrl, c_power, c_toughness, description) values ();
 
 create table cardset(
   id serial primary key,
@@ -434,7 +435,8 @@ insert into supertype (name) values ('World');
 
 create table color(
   id serial primary key,
-  name varchar (256)
+  name varchar (256),
+  imageUrl varchar (256)
 );
 
 create table card_color(
@@ -442,9 +444,9 @@ create table card_color(
   id_color integer
 );
 
-insert into color (name) values ('Colorless');
-insert into color (name) values ('White');
-insert into color (name) values ('Black');
-insert into color (name) values ('Red');
-insert into color (name) values ('Green');
-insert into color (name) values ('Blue');
+insert into color (name, imageUrl) values ('Colorless','http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=C&type=symbol');
+insert into color (name, imageUrl) values ('White', 'http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=W&type=symbol');
+insert into color (name, imageUrl) values ('Black', 'http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=B&type=symbol');
+insert into color (name, imageUrl) values ('Red', 'http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=R&type=symbol');
+insert into color (name, imageUrl) values ('Green', 'http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=G&type=symbol');
+insert into color (name, imageUrl) values ('Blue', 'http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&name=U&type=symbol');
