@@ -12,7 +12,7 @@
     <title>Magic RBC</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="lib/angular-select/isteven-multi-select.css" type="text/css"/>
     <link rel="stylesheet" href="css/estilo.css"></link>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -71,6 +71,8 @@
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
+    <script type="text/javascript" src="lib/angular-select/isteven-multi-select.js"></script>
+    
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
   </body>
