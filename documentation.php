@@ -48,20 +48,14 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>Color</td>
+                  <th>id</td>
                   <th>Type</td>
-                  <th>Super Type</td>
-                  <th>Rarity</td>
-                  <th>Convertes Mana Cost</td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody ng-repeat="t in doc.types">
                 <tr>
-                  <td>{{colors}}</td>
-                  <td>{{type}}</td>
-                  <td>{{superType}}</td>
-                  <td>{{rarity}}</td>
-                  <td>{{cmc}}</td>
+                  <td>{{t.id}}</td>
+                  <td>{{t.name}}</td>
                 </tr>
               </tbody>
             </table>

@@ -1,5 +1,12 @@
 angular.module('app', [ "isteven-multi-select" ])
-.controller('DocCtrl', function($scope) {
+.controller('DocCtrl', function($scope,$http) {
+  var vm = this;
+  $http({
+    method: 'GET',
+    url: '/api/types.php'
+  }).then(function successCallback(response) {
+    this.types = response;
+  });
 })
 .controller('MainCtrl', function($scope) {
   $scope.atualizarTabela = function(){
