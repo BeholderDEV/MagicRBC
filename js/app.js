@@ -1,4 +1,6 @@
 angular.module('app', [ "isteven-multi-select" ])
+.controller('DocCtrl', function($scope) {
+})
 .controller('MainCtrl', function($scope) {
   $scope.atualizarTabela = function(){
     $scope.colors="";
