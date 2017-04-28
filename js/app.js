@@ -5,7 +5,7 @@ angular.module('app', [ "isteven-multi-select" ])
     method: 'GET',
     url: '/api/types.php'
   }).then(function successCallback(response) {
-    this.types = response;
+    vm.types = response;
   });
 })
 .controller('MainCtrl', function($scope) {
