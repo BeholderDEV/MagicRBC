@@ -44,6 +44,7 @@ angular.module('app', [ "isteven-multi-select" ])
     url: 'api/cards.php'
   }).then(function successCallback (response) {
     vm.cards = response
+    console.log(response)
   })
 })
 .controller('MainCtrl', function ($scope) {
