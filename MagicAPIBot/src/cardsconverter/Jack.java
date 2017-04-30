@@ -73,6 +73,75 @@ public class Jack {
             
     }
     
+    private int colorToId(String c){
+        switch (c){
+            case "C":
+               return 1;
+            case "W":
+               return 2;   
+            case "B":
+               return 3;
+            case "R":
+               return 4;
+            case "G":
+               return 5;
+            case "U":
+               return 6;
+            default:
+               return 1;
+        }
+    }
+    
+    private int typeToId(String c){
+        switch (c){
+            case "Creature":
+               return 1;
+            case "Land":
+               return 2;   
+            case "Artifact":
+               return 3;
+            case "Enchantment":
+               return 4;
+            case "Planeswalker":
+               return 5;
+            case "Sorcery":
+               return 6;
+            case "Instant":
+               return 7;
+            default:
+               return 1;
+        }
+    }
+    
+    private int stypeToId(String c){
+        switch (c){
+            case "Untyped":
+               return 1;
+            case "Basic":
+               return 2;   
+            case "Legendary":
+               return 3;
+            case "Ongoing":
+               return 4;
+            case "Snow":
+               return 5;
+            case "World":
+               return 6;
+            default:
+               return 1;
+        }
+    }
+    private String resolveImageUrl(String s){
+        return s.replace("http://", "//");
+    }
+    
+    private String resplveInt(String s){
+        if(s == null){
+            s = "none";
+        }
+        return s;
+    }
+    
     public void run(){
         mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
         try {
@@ -81,30 +150,38 @@ public class Jack {
             
             for(int i=0; i<cl.getCards().length;i++){
                 if(SETS.contains(cl.getCards()[i].getSet())){
-                    if(cl.getCards()[i].getPower()!= null){
-                        System.out.println("insert into card(name, manaCost, cmc, rarity_id, set_id, imageUrl, c_power, c_toughness, description) values ('"+
-                                                        resolve(cl.getCards()[i].getName())+"','"+
-                                                        cl.getCards()[i].getManaCost()+"','"+
-                                                        Math.max(cl.getCards()[i].getCmc(),10)+"','"+
-                                                        getRarityID(cl.getCards()[i].getRarity())+"','"+
-                                                        getSetID(cl.getCards()[i].getSet())+"','"+
-                                                        cl.getCards()[i].getImageUrl()+"','"+
-                                                        cl.getCards()[i].getPower()+"','"+
-                                                        cl.getCards()[i].getToughness()+"','"+
-                                                        resolve(cl.getCards()[i].getText())+"');");
+                    System.out.println("insert into card(id, name, manaCost, cmc, rarity_id, set_id, imageUrl, c_power, c_toughness, description) values ('"+
+                                                    i+"','"+
+                                                    resolve(cl.getCards()[i].getName())+"','"+
+                                                    cl.getCards()[i].getManaCost()+"','"+
+                                                    Math.max(cl.getCards()[i].getCmc(),10)+"','"+
+                                                    getRarityID(cl.getCards()[i].getRarity())+"','"+
+                                                    getSetID(cl.getCards()[i].getSet())+"','"+
+                                                    resolveImageUrl(cl.getCards()[i].getImageUrl())+"','"+
+                                                    resplveInt(cl.getCards()[i].getPower())+"','"+
+                                                    resplveInt(cl.getCards()[i].getToughness())+"','"+
+                                                    resolve(cl.getCards()[i].getText())+"');");
+                    if(cl.getCards()[i].getColorIdentity() != null){
+                        String[] colors = cl.getCards()[i].getColorIdentity();
+                        for (String color : colors) {
+                            System.out.println("insert into card_color (id_card, id_color) values ("+(i)+","+colorToId(color)+");");
+                        }
                     }else{
-                        System.out.println("insert into card(name, manaCost, cmc, rarity_id, set_id, imageUrl, c_power, c_toughness, description) values ('"+
-                                                        resolve(cl.getCards()[i].getName())+"','"+
-                                                        cl.getCards()[i].getManaCost()+"','"+
-                                                        Math.max(cl.getCards()[i].getCmc(),10)+"','"+
-                                                        getRarityID(cl.getCards()[i].getRarity())+"','"+
-                                                        getSetID(cl.getCards()[i].getSet())+"','"+
-                                                        cl.getCards()[i].getImageUrl()+"','"+
-                                                        -1+"','"+
-                                                        -1+"','"+
-                                                        resolve(cl.getCards()[i].getText())+"');");
+                        System.out.println("insert into card_color (id_card, id_color) values ("+(i)+","+colorToId("C")+");");
                     }
-                    
+                
+                    if(cl.getCards()[i].getTypes() != null){
+                        String[] types = cl.getCards()[i].getTypes();
+                        for (String color : types) {
+                            System.out.println("insert into card_type (id_card, id_type) values ("+(i)+","+typeToId(color)+");");
+                        }
+                    }
+                    if(cl.getCards()[i].getSupertypes() != null){
+                        String[] stypes = cl.getCards()[i].getSupertypes();
+                        for (String color : stypes) {
+                            System.out.println("insert into card_supertype (id_card, id_supertype) values ("+(i)+","+stypeToId(color)+");");
+                        }
+                    }
                 }
             }
             

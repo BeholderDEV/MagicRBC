@@ -29,12 +29,6 @@ angular.module('app', [ "isteven-multi-select" ])
   })
   $http({
     method: 'GET',
-    url: 'api/subtypes.php'
-  }).then(function successCallback (response) {
-    vm.subtypes = response
-  })
-  $http({
-    method: 'GET',
     url: 'api/sets.php'
   }).then(function successCallback (response) {
     vm.sets = response

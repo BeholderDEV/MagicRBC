@@ -45,6 +45,36 @@
       <div class="page-header">
         <h1>Program Documentation <small>For a better RBC understand</small></h1>
       </div>
+      <section class="row" >
+        <h2> Cards </h2>
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Mana Cost</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="tp in doc.cards.data">
+                  <tr>
+                    <td><img ng-src="{{tp.imageurl}}" class="img-responsive" height="20px"/></td>
+                    <td>{{tp.id}}</td>
+                    <td>{{tp.name}}</td>
+                    <td>{{tp.manacost}}</td>
+                    <td>{{tp.description}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="row" id="tabels">
         <h2> Tables </h2>
         <div class="col-md-12">
@@ -147,55 +177,6 @@
                   <tr>
                     <td>{{tp.id}}</td>
                     <td>{{tp.name}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>id</td>
-                    <th>SubType</td>
-                  </tr>
-                </thead>
-                <tbody ng-repeat="tp in doc.subtypes.data">
-                  <tr>
-                    <td>{{tp.id}}</td>
-                    <td>{{tp.name}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="row" >
-        <h2> Cards </h2>
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>id</th>
-                    <th>Name</th>
-                    <th>Mana Cost</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody ng-repeat="tp in doc.cards.data">
-                  <tr>
-                    <td><img ng-src="{{tp.imageurl}}" class="img-responsive" height="20px"/></td>
-                    <td>{{tp.id}}</td>
-                    <td>{{tp.name}}</td>
-                    <td>{{tp.manacost}}</td>
-                    <td>{{tp.description}}</td>
                   </tr>
                 </tbody>
               </table>

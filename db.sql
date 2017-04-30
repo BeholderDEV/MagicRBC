@@ -1,5 +1,5 @@
 create table card(
-  id serial primary key,
+  id integer primary key,
   name varchar (256),
   manaCost varchar(64),
   cmc integer,
