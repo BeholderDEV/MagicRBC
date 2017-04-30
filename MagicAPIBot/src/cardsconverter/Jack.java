@@ -77,11 +77,12 @@ public class Jack {
         mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
         try {
             
-            CardCollection cl = mapper.readValue(new File("C:\\xampp\\htdocs\\magic\\zendikartest2.json"), CardCollection.class);
+            CardCollection cl = mapper.readValue(new File("/var/www/html/MagicRBC/zendikartest2.json"), CardCollection.class);
             
             for(int i=0; i<cl.getCards().length;i++){
                 if(SETS.contains(cl.getCards()[i].getSet())){
-                    System.out.println("insert into card(name, manaCost, cmc, rarity_id, set_id, imageUrl, c_power, c_toughness, description) values ('"+
+                    if(cl.getCards()[i].getPower()!= null){
+                        System.out.println("insert into card(name, manaCost, cmc, rarity_id, set_id, imageUrl, c_power, c_toughness, description) values ('"+
                                                         resolve(cl.getCards()[i].getName())+"','"+
                                                         cl.getCards()[i].getManaCost()+"','"+
                                                         Math.max(cl.getCards()[i].getCmc(),10)+"','"+
@@ -91,6 +92,19 @@ public class Jack {
                                                         cl.getCards()[i].getPower()+"','"+
                                                         cl.getCards()[i].getToughness()+"','"+
                                                         resolve(cl.getCards()[i].getText())+"');");
+                    }else{
+                        System.out.println("insert into card(name, manaCost, cmc, rarity_id, set_id, imageUrl, c_power, c_toughness, description) values ('"+
+                                                        resolve(cl.getCards()[i].getName())+"','"+
+                                                        cl.getCards()[i].getManaCost()+"','"+
+                                                        Math.max(cl.getCards()[i].getCmc(),10)+"','"+
+                                                        getRarityID(cl.getCards()[i].getRarity())+"','"+
+                                                        getSetID(cl.getCards()[i].getSet())+"','"+
+                                                        cl.getCards()[i].getImageUrl()+"','"+
+                                                        -1+"','"+
+                                                        -1+"','"+
+                                                        resolve(cl.getCards()[i].getText())+"');");
+                    }
+                    
                 }
             }
             

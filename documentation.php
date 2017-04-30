@@ -182,20 +182,20 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Color</td>
-                    <th>Type</td>
-                    <th>Super Type</td>
-                    <th>Rarity</td>
-                    <th>Convertes Mana Cost</td>
+                    <th>Image</th>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Mana Cost</th>
+                    <th>Description</th>
                   </tr>
                 </thead>
                 <tbody ng-repeat="tp in doc.cards.data">
                   <tr>
+                    <td><img ng-src="{{tp.imageurl}}" class="img-responsive" height="20px"/></td>
+                    <td>{{tp.id}}</td>
                     <td>{{tp.name}}</td>
-                    <td>{{type}}</td>
-                    <td>{{superType}}</td>
-                    <td>{{rarity}}</td>
-                    <td>{{cmc}}</td>
+                    <td>{{tp.manacost}}</td>
+                    <td>{{tp.description}}</td>
                   </tr>
                 </tbody>
               </table>

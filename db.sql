@@ -6,8 +6,8 @@ create table card(
   rarity_id integer,
   set_id integer,
   imageUrl varchar(256),
-  c_power integer,
-  c_toughness integer,
+  c_power varchar(8),
+  c_toughness varchar(8),
   description varchar(512)
 );
 --insert into card(name, manaCost, cmc, rarity_id, set_id, imageUrl, c_power, c_toughness, description) values ();
