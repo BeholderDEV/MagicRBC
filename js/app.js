@@ -1,4 +1,4 @@
-angular.module('app', [ "isteven-multi-select" ])
+angular.module('app', [ 'isteven-multi-select', 'ngAnimate', 'toastr' ])
 .controller('DocCtrl', function ($scope,$http) {
   var vm = this
   $http({
@@ -50,7 +50,7 @@ angular.module('app', [ "isteven-multi-select" ])
     var cmcWeight = parseFloat(angular.element('#cmc_weight').val())
 
     if (colorWeight + typeWeight + supertypeWeight + rarityWeight + cmcWeight !== 1.0) {
-      alert('A soma dos pesos deve ser igual a 1.0')
+      toastr.error('A soma dos pesos deve ser igual a 1.0', 'Error');
       return false
     }
     if (isNaN(colorWeight) || colorWeight < 0) {
@@ -68,6 +68,7 @@ angular.module('app', [ "isteven-multi-select" ])
     if (isNaN(cmcWeight) || cmcWeight < 0) {
       return false
     }
+    toastr.success('Calculando', 'Aguarde porfavor');
     return true
   }
 
