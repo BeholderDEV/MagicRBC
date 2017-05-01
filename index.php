@@ -114,40 +114,36 @@
           </div>
         </form>
       </div>
-      <section class="peso">
-        <div class="panel panel-default">
-          <label class="control-label">Pesos</label>
-          <div class="panel-body">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Cor</label>
-              <div class="col-sm-10">
-                <input type="number" class="form-control" placeholder="0.25" value="0.25" id="color_weight">
-              </div>
+      <section class="peso row">
+        <h2> Pesos </h2>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Cor</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" placeholder="0.25" value="0.25" id="color_weight">
             </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Tipo</label>
-              <div class="col-sm-10">
-                <input type="number" class="form-control" placeholder="0.25" value="0.25" id="type_weight">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">SuperTipo</label>
-              <div class="col-sm-10">
-                <input type="number" class="form-control" placeholder="0.1" value="0.1" id="supertype_weight">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Raridade</label>
-              <div class="col-sm-10">
-                <input type="number" class="form-control" placeholder="0.2" value="0.2" id="rarity_weight">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Custo de Mana</label>
-              <div class="col-sm-10">
-                <input type="number" class="form-control" placeholder="0.2" value="0.2" id="cmc_weight">
-              </div>
-            </div>
+      </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Tipo</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="0.25" value="0.25" id="type_weight">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">SuperTipo</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="0.1" value="0.1" id="supertype_weight">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Raridade</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="0.2" value="0.2" id="rarity_weight">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Custo de Mana</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" placeholder="0.2" value="0.2" id="cmc_weight">
           </div>
         </div>
       </section>
