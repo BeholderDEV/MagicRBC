@@ -44,7 +44,7 @@
     </nav>
     <div class="container">
       <div class="row" id="forms">
-        <form class="form-inline col-md-12">
+        <form class="form-inline col-md-12" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label>Color</label>
             <div
@@ -110,7 +110,7 @@
               selection-mode="single"></div>
           </div>
           <div class="form-group">
-            <button id="botao" type="submit" class="btn btn-primary pull-right">Search</button>
+            <button id="botao" type="submit" ng-click="searchCard()" class="btn btn-primary pull-right">Search</button>
           </div>
         </form>
       </div>
@@ -137,6 +137,54 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="row" >
+        <h2> Cards </h2>
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Proximidade</th>
+                    <th>Image</th>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>SuperType</th>
+                    <th>Colors</th>
+                    <th>Mana Cost</th>
+                    <th>CMC</th>
+                    <th>Power</th>
+                    <th>Toughness</th>
+                    <th>Description</th>
+                    <th>Rarity</th>
+                    <th>Cardset</th>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="tp in cards.data">
+                  <tr>
+                    <td>{{tp.proximidade}}%</td>
+                    <td><img ng-src="{{tp.imageurl}}" class="img-responsive" height="20px"/></td>
+                    <td >{{tp.id}}</td>
+                    <td>{{tp.name}}</td>
+                    <td>{{tp.tipos}}</td>
+                    <td>{{tp.supertypes}}</td>
+                    <td>{{tp.colors}}</td>
+                    <td>{{tp.manacost}}</td>
+                    <td>{{tp.cmc}}</td>
+                    <td>{{tp.c_power}}</td>
+                    <td>{{tp.c_toughness}}</td>
+                    <td>{{tp.description}}</td>
+                    <td>{{tp.rarity}}</td>
+                    <td>{{tp.cardset}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>

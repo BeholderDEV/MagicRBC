@@ -41,7 +41,34 @@ angular.module('app', [ "isteven-multi-select" ])
     console.log(response)
   })
 })
-.controller('MainCtrl', function ($scope) {
+.controller('MainCtrl', function ($scope, $http) {
+  $scope.cards=undefined;
+  $scope.searchCard = function()
+  {
+    var cmc = $scope.cmcSelected[0].name
+    if(cmc == 'maior que 9')
+    {
+      cmc='10';
+    }
+    $http({
+      method: 'POST',
+      url: 'api/full_cards.php',
+      data: {
+              'colors' :  $scope.colorsSelected[0].name,
+              'type' : $scope.typeSelected[0].name,
+              'supertype' : $scope.superTypeSelected[0].name,
+              'rarity' : $scope.raritySelected[0].name,
+              'cmc' : cmc
+            },
+      headers: {
+                  'Content-Type': 'application/json; charset=utf-8'
+                }
+    }).then(function successCallback (response) {
+      $scope.cards = response;
+      // console.log(response)
+      console.log("SUCESSO")
+    })
+  }
   $scope.atualizarTabela = function () {
     $scope.colors = ''
     for (var i = 0; i < $scope.colorsSelected.length; i++) {
