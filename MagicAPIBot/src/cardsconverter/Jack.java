@@ -154,7 +154,7 @@ public class Jack {
                                                     i+"','"+
                                                     resolve(cl.getCards()[i].getName())+"','"+
                                                     cl.getCards()[i].getManaCost()+"','"+
-                                                    Math.max(cl.getCards()[i].getCmc(),10)+"','"+
+                                                    Math.min(cl.getCards()[i].getCmc(),10)+"','"+
                                                     getRarityID(cl.getCards()[i].getRarity())+"','"+
                                                     getSetID(cl.getCards()[i].getSet())+"','"+
                                                     resolveImageUrl(cl.getCards()[i].getImageUrl())+"','"+
