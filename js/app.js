@@ -54,11 +54,17 @@ angular.module('app', [ "isteven-multi-select" ])
       method: 'POST',
       url: 'api/full_cards.php',
       data: {
-              'colors' :  $scope.colorsSelected[0].name,
-              'type' : $scope.typeSelected[0].name,
-              'supertype' : $scope.superTypeSelected[0].name,
-              'rarity' : $scope.raritySelected[0].name,
-              'cmc' : cmc
+              'color_weight'      : angular.element('#color_weight').val(),
+              'type_weight'       : angular.element('#type_weight').val(),
+              'supertype_weight'  : angular.element('#supertype_weight').val(),
+              'rarity_weight'     : angular.element('#rarity_weight').val(),
+              'cmc_weight'        : angular.element('#cmc_weight').val(),
+
+              'colors'            : $scope.colorsSelected[0].name,
+              'type'              : $scope.typeSelected[0].name,
+              'supertype'         : $scope.superTypeSelected[0].name,
+              'rarity'            : $scope.raritySelected[0].name,
+              'cmc'               : cmc
             },
       headers: {
                   'Content-Type': 'application/json; charset=utf-8'

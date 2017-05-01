@@ -35,9 +35,23 @@ $resultArray = pg_fetch_all($result);
 $json = file_get_contents('php://input');
 $obj = json_decode($json, true);
 
-$required_card = array("Colors" => $obj['colors'], "Type" => $obj['type'], "SuperType" => $obj['supertype'], "Rarity" => $obj['rarity'], "ConvertedManaCost" => $obj['cmc']);
+$required_card = array
+(
+  "Colors"    => $obj['colors'],
+  "Type"      => $obj['type'],
+  "SuperType" => $obj['supertype'],
+  "Rarity"    => $obj['rarity'],
+  "CMC"       => $obj['cmc']
+);
 
-$pesos = array("Colors" => 0.25, "Type" => 0.25, "SuperType" => 0.1, "Rarity" => 0.2, "ConvertedManaCost" => 0.2);
+$pesos = array
+(
+  "Colors"      => $obj['color_weight'],
+  "Type"        => $obj['type_weight'],
+  "SuperType"   => $obj['supertype_weight'],
+  "Rarity"      => $obj['rarity_weight'],
+  "CMC"         => $obj['cmc_weight']
+);
 
 $rarity = array
 (
@@ -107,13 +121,13 @@ foreach($resultArray as &$row) {
     $pontuacao_tipo = $type[$required_card["Type"]][$tipo];
     $pontuacao_sTipo = $supertype[$required_card["SuperType"]][$superTipo];
     $pontuacao_raridade = $rarity[$required_card["Rarity"]][$raridade];
-    $pontuacao_cmc = $cmc[$required_card["ConvertedManaCost"]][$custoConvertido];
+    $pontuacao_cmc = $cmc[$required_card["CMC"]][$custoConvertido];
 
     $proximidade = $pontuacao_cor*$pesos["Colors"];
     $proximidade += $pontuacao_tipo*$pesos["Type"];
     $proximidade += $pontuacao_sTipo*$pesos["SuperType"];
     $proximidade += $pontuacao_raridade*$pesos["Rarity"];
-    $proximidade += $pontuacao_cmc*$pesos["ConvertedManaCost"];
+    $proximidade += $pontuacao_cmc*$pesos["CMC"];
 
     $row["proximidade"]= $proximidade*100;
 }
