@@ -42,34 +42,38 @@ angular.module('app', [ "isteven-multi-select" ])
   })
 })
 .controller('MainCtrl', function ($scope, $http) {
-  
-  function validateWeights(){
-    var colorWeight = parseFloat(angular.element('#color_weight').val());
-    var typeWeight = parseFloat(angular.element('#type_weight').val());
-    var supertypeWeight = parseFloat(angular.element('#supertype_weight').val());
-    var rarityWeight = parseFloat(angular.element('#rarity_weight').val());
-    var cmcWeight = parseFloat(angular.element('#cmc_weight').val());
-    if(isNaN(colorWeight) || colorWeight < 0){
-      return false;
+  function validateWeights () {
+    var colorWeight = parseFloat(angular.element('#color_weight').val())
+    var typeWeight = parseFloat(angular.element('#type_weight').val())
+    var supertypeWeight = parseFloat(angular.element('#supertype_weight').val())
+    var rarityWeight = parseFloat(angular.element('#rarity_weight').val())
+    var cmcWeight = parseFloat(angular.element('#cmc_weight').val())
+
+    if (colorWeight + typeWeight + supertypeWeight + rarityWeight + cmcWeight !== 1.0) {
+      alert('A soma dos pesos deve ser igual a 1.0')
+      return false
     }
-    if(isNaN(typeWeight) || typeWeight < 0){
-      return false;
+    if (isNaN(colorWeight) || colorWeight < 0) {
+      return false
     }
-    if(isNaN(supertypeWeight) || supertypeWeight < 0){
-      return false;
+    if (isNaN(typeWeight) || typeWeight < 0) {
+      return false
     }
-    if(isNaN(rarityWeight) || rarityWeight < 0){
-      return false;
+    if (isNaN(supertypeWeight) || supertypeWeight < 0) {
+      return false
     }
-    if(isNaN(cmcWeight) || cmcWeight < 0){
-      return false;
+    if (isNaN(rarityWeight) || rarityWeight < 0) {
+      return false
     }
-    return true;
+    if (isNaN(cmcWeight) || cmcWeight < 0) {
+      return false
+    }
+    return true
   }
 
   $scope.cards=undefined;
   $scope.searchCard = function()
-  { 
+  {
     if($scope.colorsSelected.length == 0){
       return;
     }
