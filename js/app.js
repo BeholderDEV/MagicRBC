@@ -1,4 +1,4 @@
-angular.module('app', [ 'isteven-multi-select', 'ngAnimate', 'toastr' ])
+angular.module('app', [ 'isteven-multi-select', 'toastr' ])
 .controller('DocCtrl', function ($scope,$http) {
   var vm = this
   $http({
