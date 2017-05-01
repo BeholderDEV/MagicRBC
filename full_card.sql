@@ -8,14 +8,11 @@ select  card.name,
         string_agg(distinct rarity.name, ', ') as rarity,
         string_agg(distinct cardset.name, ', ') as cardset,
         string_agg(distinct color.name, ', ') as colors,
-        string_agg(subtype.name, ', ') as subtypes,
         string_agg(distinct supertype.name, ', ') as supertypes,
         string_agg(distinct public.type.name, ', ') as tipos
         from card
         full join card_color on (card_color.id_card = card.id)
         full join color on (card_color.id_color = color.id)
-        full join card_subtype on (card_subtype.id_card = card.id)
-        full join subtype on (card_subtype.id_subtype = subtype.id)
         full join card_supertype on (card_supertype.id_card = card.id)
         full join supertype on (card_supertype.id_supertype = supertype.id)
         full join card_type on (card_type.id_card = card.id)

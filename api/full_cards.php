@@ -26,8 +26,13 @@ $query = "select  card.name,
         full join cardset on (cardset.id = card.set_id)
         full join rarity on (rarity.id = card.rarity_id)
         group by card.id;";
+
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 $resultArray = pg_fetch_all($result);
+
+$required_card = array("Colors" => "Black", "Type" => "Instant", "SuperType" => "Untyped", "Rarity" => "Common", "ConvertedManaCost" => "2");
+
+$pesos = array("Colors" => 0.25, "Type" => 0.25, "SuperType" => 0.1, "Rarity" => 0.2, "ConvertedManaCost" => 0.2);
 
 $rarity = array
 (
@@ -84,7 +89,60 @@ $cmc = array
   "9"  =>  array( "0" => 0.0, "1" => 0.2, "2" => 0.3, "3" => 0.4, "4"=>	0.5, "5" =>	0.6, "6" =>	0.7, "7" =>	0.8, "8" =>	0.9, "9" =>	  1, "10" =>	0.9),
   "10" =>  array( "0" => 0.0, "1" => 0.1, "2" => 0.2, "3" => 0.3, "4"=>	0.4, "5" =>	  5, "6" =>	0.6, "7" =>	0.7, "8" =>	0.8, "9" =>	0.9, "10" =>	  1)
 );
+unset($resultArray[count($resultArray)-1]);
 
-echo $type["Land"]["Instant"];
-// echo json_encode($resultArray);
+foreach($resultArray as &$row) {
+    $cor = trata_string($row["colors"]);
+    $tipo = trata_string($row["tipos"]);
+    $superTipo = trata_string($row["supertypes"]);
+    $raridade = $row["rarity"];
+    $custoConvertido = trata_custo($row["cmc"]);
+
+    $pontuacao_cor = $color[$required_card["Colors"]][$cor];
+    $pontuacao_tipo = $type[$required_card["Type"]][$tipo];
+    $pontuacao_sTipo = $supertype[$required_card["SuperType"]][$superTipo];
+    $pontuacao_raridade = $rarity[$required_card["Rarity"]][$raridade];
+    $pontuacao_cmc = $cmc[$required_card["ConvertedManaCost"]][$custoConvertido];
+
+    $proximidade = $pontuacao_cor*$pesos["Colors"];
+    $proximidade += $pontuacao_tipo*$pesos["Type"];
+    $proximidade += $pontuacao_sTipo*$pesos["SuperType"];
+    $proximidade += $pontuacao_tipo*$pesos["Rarity"];
+    $proximidade += $pontuacao_tipo*$pesos["ConvertedManaCost"];
+
+    $row["proximidade"]= $proximidade;
+}
+
+foreach ($resultArray as $key => $row) {
+    // replace 0 with the field's index/key
+    $dates[$key]  = $row["proximidade"];
+}
+
+array_multisort($dates, SORT_DESC, $resultArray);
+
+// usort($resultArray, function($a, $b) {
+//     return $a["proximidade"] - $b["proximidade"];
+// });
+
+// print_r ($resultArray);
+echo json_encode($resultArray);
+
+function trata_custo($custo)
+{
+  if($custo>10)
+  {
+    return 10;
+  }
+  return $custo;
+}
+
+function trata_string($string)
+{
+  if($string==null)
+  {
+    return "Untyped";
+  }
+  $array = explode(", ", $string);
+  return $array[0];
+}
 ?>
