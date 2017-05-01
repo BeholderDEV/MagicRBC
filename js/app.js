@@ -41,7 +41,7 @@ angular.module('app', [ 'isteven-multi-select', 'toastr' ])
     console.log(response)
   })
 })
-.controller('MainCtrl', function ($scope, $http) {
+.controller('MainCtrl', function ($scope, $http, toastr) {
   function validateWeights () {
     var colorWeight = parseFloat(angular.element('#color_weight').val())
     var typeWeight = parseFloat(angular.element('#type_weight').val())
