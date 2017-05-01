@@ -43,7 +43,7 @@
     </nav>
     <div class="container">
       <div class="page-header">
-        <h1>Program Documentation <small>For a better RBC understand</small></h1>
+        <h1>Program Documentation <small>Card Data</small></h1>
       </div>
       <section class="row" >
         <h2> Cards </h2>

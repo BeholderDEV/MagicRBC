@@ -22,7 +22,7 @@
     <![endif]-->
   </head>
 
-  <body ng-controller="MainCtrl as main">
+  <body ng-controller="MainCtrl as main" ng-cloak>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -121,31 +121,31 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Cor</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="0.25" value="0.25" id="color_weight">
+                <input type="number" class="form-control" placeholder="0.25" value="0.25" id="color_weight">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">Tipo</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="0.25" value="0.25" id="type_weight">
+                <input type="number" class="form-control" placeholder="0.25" value="0.25" id="type_weight">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">SuperTipo</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="0.1" value="0.1" id="supertype_weight">
+                <input type="number" class="form-control" placeholder="0.1" value="0.1" id="supertype_weight">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">Raridade</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="0.2" value="0.2" id="rarity_weight">
+                <input type="number" class="form-control" placeholder="0.2" value="0.2" id="rarity_weight">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">Custo de Mana</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="0.2" value="0.2" id="cmc_weight">
+                <input type="number" class="form-control" placeholder="0.2" value="0.2" id="cmc_weight">
               </div>
             </div>
           </div>
@@ -202,7 +202,7 @@
                     <th>Cardset</th>
                   </tr>
                 </thead>
-                <tbody ng-repeat="tp in cards.data">
+                <tbody ng-repeat="tp in cards.data" ng-if="$index < 50">
                   <tr>
                     <td>{{tp.proximidade}}%</td>
                     <td><img ng-src="{{tp.imageurl}}" class="img-responsive" height="20px"/></td>
