@@ -148,14 +148,11 @@ foreach($resultArray as $key => &$row) {
     $proximidade += $pontuacao_raridade*$pesos["Rarity"];
     $proximidade += $pontuacao_cmc*$pesos["CMC"];
 
+    $row["supertypes"] = $superTipo[0];
+
     $row["proximidade"]= $proximidade*100;
     $dates[$key]  = $row["proximidade"];
 }
-
-// foreach ($resultArray as $key => $row) {
-//     // replace 0 with the field's index/key
-//     $dates[$key]  = $row["proximidade"];
-// }
 
 array_multisort($dates, SORT_DESC, $resultArray);
 
