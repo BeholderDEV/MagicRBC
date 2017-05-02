@@ -128,7 +128,7 @@ $cmc = array
 );
 unset($resultArray[count($resultArray)-1]);
 
-foreach($resultArray as &$row) {
+foreach($resultArray as $key => &$row) {
     // echo $row['name']." ";
     $cor = trata_string($row["colors"]);
     $tipo = trata_string($row["tipos"]);
@@ -149,12 +149,13 @@ foreach($resultArray as &$row) {
     $proximidade += $pontuacao_cmc*$pesos["CMC"];
 
     $row["proximidade"]= $proximidade*100;
-}
-
-foreach ($resultArray as $key => $row) {
-    // replace 0 with the field's index/key
     $dates[$key]  = $row["proximidade"];
 }
+
+// foreach ($resultArray as $key => $row) {
+//     // replace 0 with the field's index/key
+//     $dates[$key]  = $row["proximidade"];
+// }
 
 array_multisort($dates, SORT_DESC, $resultArray);
 
