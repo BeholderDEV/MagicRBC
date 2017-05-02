@@ -83,6 +83,13 @@ angular.module('app', [ 'isteven-multi-select', 'toastr' ])
     {
       cmc='10';
     }
+    var ColorArray = '';
+
+    $scope.colorsSelected.forEach(function(color)
+    {
+      ColorArray+=color.name+", ";
+    });
+    ColorArray = ColorArray.substring(0, ColorArray.length - 2);
 
     if(!validateWeights()){
       return;
@@ -97,7 +104,7 @@ angular.module('app', [ 'isteven-multi-select', 'toastr' ])
               'rarity_weight'     : angular.element('#rarity_weight').val(),
               'cmc_weight'        : angular.element('#cmc_weight').val(),
 
-              'colors'            : $scope.colorsSelected[0].name,
+              'colors'            : ColorArray,
               'type'              : $scope.typeSelected[0].name,
               'supertype'         : $scope.superTypeSelected[0].name,
               'rarity'            : $scope.raritySelected[0].name,

@@ -37,7 +37,7 @@ $obj = json_decode($json, true);
 
 $required_card = array
 (
-  "Colors"    => $obj['colors'],
+  "Colors"    => trata_string($obj['colors']),
   "Type"      => $obj['type'],
   "SuperType" => $obj['supertype'],
   "Rarity"    => $obj['rarity'],
@@ -53,14 +53,32 @@ $pesos = array
   "CMC"         => $obj['cmc_weight']
 );
 
+// $required_card = array
+// (
+//   "Colors"    => array("Black", "Red", "Blue", "White", "Green"),
+//   "Type"      => "Enchantment",
+//   "SuperType" => "Untyped",
+//   "Rarity"    => "Rare",
+//   "CMC"       => "5"
+// );
+//
+// $pesos = array
+// (
+//   "Colors"      => 0.25,
+//   "Type"        => 0.25,
+//   "SuperType"   => 0.1,
+//   "Rarity"      => 0.2,
+//   "CMC"         => 0.2
+// );
+
 $rarity = array
 (
-  "Common"      =>  array( "Common" => 1.0, "Uncommon" => 0.8, "Rare" => 0.6, "Mythic Rare" => 0.4, "Rare"=>	0.2, "Basic Land" =>	0.8),
-  "Uncommon"    =>  array( "Common" => 0.8, "Uncommon" => 1.0, "Rare" => 0.8, "Mythic Rare" => 0.6, "Rare"=>	0.4, "Basic Land" =>	0.6),
-  "Rare"        =>  array( "Common" => 0.6, "Uncommon" => 0.8, "Rare" => 1.0, "Mythic Rare" => 0.8, "Rare"=>	0.6, "Basic Land" =>	0.4),
-  "Mythic Rare" =>  array( "Common" => 0.4, "Uncommon" => 0.6, "Rare" => 0.8, "Mythic Rare" => 1.0, "Rare"=>	0.8, "Basic Land" =>	0.2),
-  "Special"     =>  array( "Common" => 0.2, "Uncommon" => 0.4, "Rare" => 0.6, "Mythic Rare" => 0.8, "Rare"=>  1.0, "Basic Land" =>	0.1),
-  "Basic Land"  =>  array( "Common" => 0.8, "Uncommon" => 0.6, "Rare" => 0.4, "Mythic Rare" => 0.2, "Rare"=>	0.8, "Basic Land" =>	1.0)
+  "Common"      =>  array( "Common" => 1.0, "Uncommon" => 0.8, "Rare" => 0.6, "Mythic Rare" => 0.4, "Special"=>	0.2, "Basic Land" =>	0.8),
+  "Uncommon"    =>  array( "Common" => 0.8, "Uncommon" => 1.0, "Rare" => 0.8, "Mythic Rare" => 0.6, "Special"=>	0.4, "Basic Land" =>	0.6),
+  "Rare"        =>  array( "Common" => 0.6, "Uncommon" => 0.8, "Rare" => 1.0, "Mythic Rare" => 0.8, "Special"=>	0.6, "Basic Land" =>	0.4),
+  "Mythic Rare" =>  array( "Common" => 0.4, "Uncommon" => 0.6, "Rare" => 0.8, "Mythic Rare" => 1.0, "Special"=>	0.8, "Basic Land" =>	0.2),
+  "Special"     =>  array( "Common" => 0.2, "Uncommon" => 0.4, "Rare" => 0.6, "Mythic Rare" => 0.8, "Special"=> 1.0, "Basic Land" =>	0.1),
+  "Basic Land"  =>  array( "Common" => 0.8, "Uncommon" => 0.6, "Rare" => 0.4, "Mythic Rare" => 0.2, "Special"=>	0.8, "Basic Land" =>	1.0)
 );
 
 $type = array
@@ -111,15 +129,16 @@ $cmc = array
 unset($resultArray[count($resultArray)-1]);
 
 foreach($resultArray as &$row) {
+    // echo $row['name']." ";
     $cor = trata_string($row["colors"]);
     $tipo = trata_string($row["tipos"]);
     $superTipo = trata_string($row["supertypes"]);
     $raridade = $row["rarity"];
     $custoConvertido = trata_custo($row["cmc"]);
 
-    $pontuacao_cor = $color[$required_card["Colors"]][$cor];
-    $pontuacao_tipo = $type[$required_card["Type"]][$tipo];
-    $pontuacao_sTipo = $supertype[$required_card["SuperType"]][$superTipo];
+    $pontuacao_cor = calcula_cor($required_card, $cor, $color);
+    $pontuacao_tipo = $type[$required_card["Type"]][$tipo[0]];
+    $pontuacao_sTipo = $supertype[$required_card["SuperType"]][$superTipo[0]];
     $pontuacao_raridade = $rarity[$required_card["Rarity"]][$raridade];
     $pontuacao_cmc = $cmc[$required_card["CMC"]][$custoConvertido];
 
@@ -146,6 +165,28 @@ array_multisort($dates, SORT_DESC, $resultArray);
 // print_r ($resultArray);
 echo json_encode($resultArray);
 
+function calcula_cor($required_card, $cor, $color)
+{
+  $pontuacao = 0;
+  $ponto_cor = 0;
+  $numero_cores_carta = count($required_card["Colors"]);
+  $numero_cores_carta_banco = count($cor);
+  foreach ($required_card["Colors"] as $cardColor)
+  {
+      foreach ($cor as $rowColor)
+      {
+        if($ponto_cor<$color[$cardColor][$rowColor])
+        {
+          $ponto_cor = $color[$cardColor][$rowColor];
+        }
+      }
+      $pontuacao += $ponto_cor;
+      $ponto_cor = 0;
+  }
+  $pontuacao = $pontuacao/($numero_cores_carta);
+  // echo $pontuacao."<br>";
+  return $pontuacao;
+}
 
 function trata_custo($custo)
 {
@@ -160,9 +201,9 @@ function trata_string($string)
 {
   if($string==null)
   {
-    return "Untyped";
+    $string = "Untyped";
   }
   $array = explode(", ", $string);
-  return $array[0];
+  return $array;
 }
 ?>
