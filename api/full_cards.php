@@ -15,6 +15,7 @@ $query = "select
           card.description,
           string_agg(distinct rarity.name, ', ') as rarity,
           string_agg(distinct cardset.name, ', ') as cardset,
+          string_agg(distinct cardset.imageurl, ', ') as setimage,
           string_agg(distinct color.name, ', ') as colors,
           string_agg(distinct supertype.name, ', ') as supertypes,
           string_agg(distinct public.type.name, ', ') as tipos

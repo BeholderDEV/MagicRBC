@@ -1,5 +1,5 @@
 angular.module('app', [ 'isteven-multi-select', 'toastr' ])
-.controller('DocCtrl', function ($scope,$http) {
+.controller('DocCtrl', function ($scope,$http, toastr) {
   var vm = this
   $http({
     method: 'GET',
@@ -68,7 +68,7 @@ angular.module('app', [ 'isteven-multi-select', 'toastr' ])
     if (isNaN(cmcWeight) || cmcWeight < 0) {
       return false
     }
-    toastr.success('Calculando', 'Aguarde porfavor');
+    toastr.success('Calculando', 'Aguarde');
     return true
   }
 

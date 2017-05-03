@@ -176,48 +176,46 @@
 
       <section class="row" >
         <h2> Cards </h2>
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Proximidade</th>
-                    <th>Image</th>
-                    <th>id</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>SuperType</th>
-                    <th>Colors</th>
-                    <th>Mana Cost</th>
-                    <th>CMC</th>
-                    <th>Power</th>
-                    <th>Toughness</th>
-                    <th>Description</th>
-                    <th>Rarity</th>
-                    <th>Cardset</th>
-                  </tr>
-                </thead>
-                <tbody ng-repeat="tp in cards.data" ng-if="$index < 50">
-                  <tr>
-                    <td>{{tp.proximidade}}%</td>
-                    <td><img ng-src="{{tp.imageurl}}" class="img-responsive" height="20px"/></td>
-                    <td >{{tp.id}}</td>
-                    <td>{{tp.name}}</td>
-                    <td>{{tp.tipos}}</td>
-                    <td>{{tp.supertypes}}</td>
-                    <td>{{tp.colors}}</td>
-                    <td>{{tp.manacost}}</td>
-                    <td>{{tp.cmc}}</td>
-                    <td>{{tp.c_power}}</td>
-                    <td>{{tp.c_toughness}}</td>
-                    <td>{{tp.description}}</td>
-                    <td>{{tp.rarity}}</td>
-                    <td>{{tp.cardset}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>%</th>
+                  <th>Set</th>
+                  <th>Image</th>
+                  <th>id</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>SType</th>
+                  <th>Colors</th>
+                  <th>ManaCost</th>
+                  <th>CMC</th>
+                  <th>P</th>
+                  <th>T</th>
+                  <th>Text</th>
+                  <th>Rarity</th>
+                </tr>
+              </thead>
+              <tbody ng-repeat="tp in cards.data" ng-if="$index < 50">
+                <tr>
+                  <td>{{tp.proximidade}}%</td>
+                  <td><img ng-src="{{tp.setimage}}" class="img-responsive"/></td>
+                  <td><img ng-src="{{tp.imageurl}}" class="img-responsive"/></td>
+                  <td >{{tp.id}}</td>
+                  <td>{{tp.name}}</td>
+                  <td>{{tp.tipos}}</td>
+                  <td>{{tp.supertypes}}</td>
+                  <td>{{tp.colors}}</td>
+                  <td>{{tp.manacost}}</td>
+                  <td>{{tp.cmc}}</td>
+                  <td>{{tp.c_power}}</td>
+                  <td>{{tp.c_toughness}}</td>
+                  <td>{{tp.description}}</td>
+                  <td>{{tp.rarity}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
