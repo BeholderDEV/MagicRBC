@@ -1,5 +1,6 @@
-angular.module('app', [ 'isteven-multi-select', 'toastr' ])
-.controller('DocCtrl', function ($scope,$http, toastr) {
+var app = angular.module('app', [ 'isteven-multi-select', 'toastr' ])
+
+app.controller('DocCtrl', function ($scope,$http, toastr) {
   var vm = this
   $http({
     method: 'GET',
@@ -41,7 +42,31 @@ angular.module('app', [ 'isteven-multi-select', 'toastr' ])
     console.log(response)
   })
 })
-.controller('MainCtrl', function ($scope, $http, toastr) {
+app.controller('MainCtrl', function ($scope, $http, toastr, $filter)
+{
+  $scope.number = 5;
+
+  $scope.cards=undefined;
+  $scope.currentPage = 0;
+  $scope.pageSize = 10;
+  $scope.q = '';
+  $scope.getNumber = function() {
+      var a = new Array($scope.number);
+      for(var i=0 ; i< a.length; i++){
+        a[i]=$scope.currentPage+i;
+      }
+      return a
+  }
+  $scope.getData = function () {
+    if($scope.cards !== undefined){
+      return $filter('filter')($scope.cards.data, $scope.q)
+    }
+  }
+  $scope.numberOfPages = function(){
+    if($scope.cards !== undefined){
+      return Math.ceil($scope.getData().length/$scope.pageSize);
+    }
+  }
   function validateWeights () {
     var colorWeight = parseFloat(angular.element('#color_weight').val())
     var typeWeight = parseFloat(angular.element('#type_weight').val())
@@ -72,7 +97,7 @@ angular.module('app', [ 'isteven-multi-select', 'toastr' ])
     return true
   }
 
-  $scope.cards=undefined;
+
   $scope.searchCard = function()
   {
     if($scope.colorsSelected.length == 0){
@@ -116,6 +141,8 @@ angular.module('app', [ 'isteven-multi-select', 'toastr' ])
     }).then(function successCallback (response) {
       $scope.cards = response;
       // console.log(response)
+      console.log('aqui')
+
       console.log("SUCESSO")
     })
   }
@@ -179,4 +206,13 @@ angular.module('app', [ 'isteven-multi-select', 'toastr' ])
     { name: '9', ticked: false },
     { name: 'maior que 9', ticked: false }
   ]
+}
+)
+app.filter('startFrom', function() {
+    return function(input, start) {
+        start = +start; //parse to int
+        if(input !== undefined){
+          return input.slice(start);
+        }
+    }
 })

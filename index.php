@@ -197,7 +197,7 @@
                   <th>Rarity</th>
                 </tr>
               </thead>
-              <tbody ng-repeat="tp in cards.data" ng-if="$index < 50">
+              <tbody ng-repeat="tp in cards.data | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize">
                 <tr>
                   <td>{{tp.proximidade}}%</td>
                   <td><img ng-src="{{tp.setimage}}" class="img-responsive"/></td>
@@ -216,6 +216,28 @@
                 </tr>
               </tbody>
             </table>
+            <!-- <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <li>
+                  <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </button>
+                </li>
+                <li><button ng-disabled="false" ng-repeat="i in getNumber()" ng-click="currentPage=i"><span aria-hidden="true">{{i+1}}</span></button></li>
+                <li>
+                  <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </button>
+                </li>
+              </ul>
+            </nav> -->
+            <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+                Previous
+            </button>
+            {{currentPage+1}}/{{numberOfPages()}}
+            <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+                Next
+            </button>
           </div>
         </div>
       </section>
